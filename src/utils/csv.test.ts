@@ -1,0 +1,2 @@
+import {describe,expect,it} from 'vitest';import {parseCsv} from './csv';
+describe('CSV parsing',()=>{it('parses supported columns and quoted commas',()=>{const rows=parseCsv('full_name,professional_email,notes\n"Rowan, Maya",maya@example.edu,"Program, office"');expect(rows[0].full_name).toBe('Rowan, Maya');expect(rows[0].notes).toBe('Program, office')});it('requires an email column',()=>expect(()=>parseCsv('name\nMaya')).toThrow(/professional_email/))});
